@@ -17,14 +17,17 @@ Requires: qt5-qtbase
 tomatime is a Pomodoro App for Linux Platform
 
 %prep
-%autosetup -n %{name}-master/%{name}
+%autosetup
+cd %{name}
 cp ../{README.md,AUTHOR,INSTALL,LICENSE,CONTRIBUTORS} .
 
 %build
+cd %{name}
 qmake-qt5
 make %{?_smp_mflags}
 
 %install
+cd %{name}
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_datadir}/applications
 install -m 751 tomatime %{buildroot}%{_bindir}
